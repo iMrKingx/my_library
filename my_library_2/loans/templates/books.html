@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>My Library | Books</title>
+</head>
+<body>
+	<h1>Books</h1>
+	<ul>
+		{% for book in books %}
+		<li>
+			{{book.authors}}  ({{book.publication_date.year}})  "{{book.title}}"
+			{% if book.isbn %}
+				ISBN: {{ book.isbn }}
+			{% endif %}
+			(
+			<a href="{% url 'get_book' book.id %}">Show</a>, 
+			<a href="{% url 'update_book' book.id %}">Update</a>,
+			<a href="{% url 'delete_book' book.id %}">Delete</a>
+			)
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
